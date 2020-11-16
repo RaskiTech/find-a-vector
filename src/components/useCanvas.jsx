@@ -21,7 +21,6 @@ const useCanvas = (draw, setCanvasContext) => {
     canvas.style.left = "0px";
     canvas.style.top = "0px";
     canvas.style.position = "absolute";
-    console.log("rendered");
     draw(context);
 
     window.addEventListener("resize", updateWidthAndHeight);

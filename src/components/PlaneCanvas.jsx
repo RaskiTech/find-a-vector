@@ -37,11 +37,22 @@ const PlaneCanvas = props => {
         }
     }
 
+    const touchDown = (event) => {
+        setMouseDown(true);
+        //let mousePos = getTouchPos(canvas, event);
+        let touch = event.touches[0];
+        console.log("touch", touch, "event", event);
+    }
+    const touchMove = (event) => {
+    
+    }
+    const touchUp = (event) => {
 
+    }
 
     
     
-    return <canvas onTouchStart={mouseDown} onTouchEnd={mouseUp} onTouchMove={mouseMove}
+    return <canvas onTouchStart={touchDown} onTouchEnd={touchUp} onTouchMove={touchMove}
         onMouseMove={mouseMove} onMouseDown={mouseDown} onMouseUp={mouseUp} ref={canvasRef} {...rest}/>
   }
   
