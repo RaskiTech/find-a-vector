@@ -41,7 +41,8 @@ const PlaneCanvas = props => {
 
     
     
-    return <canvas onMouseMove={mouseMove} onMouseDown={mouseDown} onMouseUp={mouseUp} ref={canvasRef} {...rest}/>
+    return <canvas onTouchStart={mouseDown} onTouchEnd={mouseUp} onTouchMove={mouseMove}
+        onMouseMove={mouseMove} onMouseDown={mouseDown} onMouseUp={mouseUp} ref={canvasRef} {...rest}/>
   }
   
   export default PlaneCanvas;
