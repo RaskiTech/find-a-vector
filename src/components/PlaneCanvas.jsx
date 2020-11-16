@@ -39,15 +39,26 @@ const PlaneCanvas = props => {
 
     const touchDown = (event) => {
         setMouseDown(true);
-        //let mousePos = getTouchPos(canvas, event);
+        setHasDragged(false);
         let touch = event.touches[0];
-        console.log("touch", touch, "event", event);
+        setLastMousePositionX(touch.clientX);
+        setLastMousePositionY(touch.clientY);
     }
     const touchMove = (event) => {
-    
+        setHasDragged(true);
+        let touch = event.touches[0];
+        let differenceX = lastMousePositionX - touch.clientX;
+        let differenceY = lastMousePositionY - touch.clientY;
+        setLastMousePositionX(touch.clientX);
+        setLastMousePositionY(touch.clientY);
+        onCanvasDrag(differenceX, differenceY);
     }
     const touchUp = (event) => {
-
+        setMouseDown(false);
+        if (!hasDragged) {
+            // It's a click. Add a point
+            addDataPoint(lastMousePositionX, lastMousePositionY);
+        }
     }
 
     
