@@ -164,7 +164,6 @@ class Controller extends Component {
 			if(vectorPlane.selectedVectorID !== 0) {
 			this.setState({calculateButtonDisablbed: true});
 				if (vectorPlane.points.length < vectorPlane.coefficients.length) {
-					console.log(vectorPlane.coefficients.length-vectorPlane.points.length, vectorPlane.coefficients.length, vectorPlane.points.length)
 					this.setState({calculateVectorText: "Put " +  (vectorPlane.coefficients.length-vectorPlane.points.length) + " more point"+(vectorPlane.coefficients.length-vectorPlane.points.length === 1 ? "" : "s")})
 				}
 			}
@@ -428,7 +427,6 @@ class Controller extends Component {
 
 		matrixB = matrixB.map(function(value, index, matrix){
 			let newValue = 0;
-			//console.log("Index", index);
 			for (let i = 0; i < points.length; i++)
 				newValue += points[i][1] * Math.pow(points[i][0], index[1]);
 			return newValue
