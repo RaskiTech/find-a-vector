@@ -187,6 +187,8 @@ class Controller extends Component {
 	}
 
 	draw = (ctx) => {
+		ctx.lineWidth = 1;
+
 		// BG
         ctx.fillStyle = COLORS.white;
         ctx.beginPath();
@@ -218,9 +220,9 @@ class Controller extends Component {
 		ctx.stroke();
 		
 		// Points
-		this.drawDataPoints(ctx);
 		if (vectorPlane.renderLine)
-			this.drawLinePoints(ctx);
+			this.drawLine(ctx);
+		this.drawDataPoints(ctx);
 		
 		// draw the vector formula
 		if (vectorPlane.selectedVectorID != 0) {
@@ -263,21 +265,23 @@ class Controller extends Component {
 		}
 		ctx.fill();
 	}
-	drawLinePoints = (ctx) => {
-		// Draw many points on the line
+
+	// Draw many lines to form a curving line
+	drawLine = (ctx) => {
 		ctx.beginPath();
-		ctx.fillStyle = COLORS.linePoint
-		for (let i = 0; i < this.state.pointsInLine; i++){
+		ctx.lineWidth = this.state.linePointSize;
+		ctx.strokeStyle = COLORS.linePoint;
+
+		for (let i = 0; i < this.state.pointsInLine; i++) {
 			let xP = window.innerWidth * (i / this.state.pointsInLine);
 			let x = this.screenToPlane(xP, 0)[0];
 			let y = vectorPlane.getPrediction(x);
 			let yP = this.planeToScreen(0, y)[1];
 			
-			// Draw the point
-			ctx.moveTo(xP, yP);
-			ctx.arc(xP, yP, this.state.linePointSize, 0, Math.PI*2);
+			// Draw the line
+			ctx.lineTo(xP, yP);
 		}
-		ctx.fill();
+		ctx.stroke();
 	}
 
 	changeIsCalculating = (isCalculating) => {

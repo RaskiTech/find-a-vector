@@ -4,5 +4,9 @@ import "bootstrap/dist/css/bootstrap.css"
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import App from "./App"
 
-// This is a test comment
 ReactDOM.render(<App />, document.getElementById("root"));
+
+// git add .
+// git commit -m "what did u do"
+// npm run deploy
+// git push
