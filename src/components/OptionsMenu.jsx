@@ -18,8 +18,8 @@ class OptionsMenu extends Component {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<h4>Points in the vector</h4>
-					<p>How many points are rendered to form the vector</p>
+					<h4>Lines in the vector</h4>
+					<p>How many lines are rendered to form the vector</p>
                     <div>
                         {this.props.pointsInLine}
                         <RangeSlider 
@@ -30,8 +30,8 @@ class OptionsMenu extends Component {
                             onChange={newAmount => this.props.setPointsInLine(newAmount.target.value)}/>
                     </div>
 
-					<h4>Point sizes</h4>
-					<p>Data points</p>
+					<h4>Sizes</h4>
+					<p>Data point sizes</p>
                     <div>
                         {this.props.dataPointSize}
                         <RangeSlider 
@@ -41,12 +41,12 @@ class OptionsMenu extends Component {
                             value={this.props.dataPointSize}
                             onChange={newAmount => this.props.setDataPointSize(newAmount.target.value)}/>
                     </div>
-                    <p>Line points</p>
+                    <p>Vector size</p>
                     <div>
                         {this.props.linePointSize}
                         <RangeSlider 
-                            min={5}
-					        max={30}
+                            min={1}
+					        max={20}
                             tooltip="off"
                             value={this.props.linePointSize}
                             onChange={newAmount => this.props.setLinePointSize(newAmount.target.value)}/>

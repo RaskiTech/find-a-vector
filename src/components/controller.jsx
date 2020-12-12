@@ -281,6 +281,12 @@ class Controller extends Component {
 			// Draw the line
 			ctx.lineTo(xP, yP);
 		}
+		// Draw the last line to make sure that the line end where the screen ends
+		let xP = window.innerWidth;
+		let x = this.screenToPlane(xP, 0)[0];
+		let yP = this.planeToScreen(0, vectorPlane.getPrediction(x))[1];
+		ctx.lineTo(xP, yP);
+
 		ctx.stroke();
 	}
 
